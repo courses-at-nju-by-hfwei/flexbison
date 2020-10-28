@@ -15,9 +15,10 @@
 "liberal" { printf("conservative"); }
 . { printf("%s", yytext); }
 %%
-main()
+
+int main()
 {
   yylex();
 }
 
-yywrap() { return 1; }
+// int yywrap() { return 1; } // what does yywrap() mean?

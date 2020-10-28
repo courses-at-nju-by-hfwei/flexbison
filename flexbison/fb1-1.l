@@ -14,13 +14,17 @@ int lines = 0;
 
 %%
 
-[a-zA-Z]+	{ words++; chars += strlen(yytext); }
+%{
+// [a-zA-Z]+	{ words++; chars += strlen(yytext); }
+%}
+
+[^ \t\n\r\f\v]+ { words++; chars += strlen(yytext); }
 \n		{ chars++; lines++; }
 .		{ chars++; }
 
 %%
 
-main()
+int main()
 {
   yylex();
   printf("%8d%8d%8d\n", lines, words, chars);
