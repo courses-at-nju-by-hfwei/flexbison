@@ -21,9 +21,7 @@ int lines = 0;
 
 %%
 
-main(argc, argv)
-int argc;
-char **argv;
+int main(int argc, char **argv)
 {
   if(argc > 1) {
     if(!(yyin = fopen(argv[1], "r"))) {
@@ -36,4 +34,4 @@ char **argv;
   printf("%8d%8d%8d\n", lines, words, chars);
 }
 
-yywrap() { return 1; }
+int yywrap() { return 1; }

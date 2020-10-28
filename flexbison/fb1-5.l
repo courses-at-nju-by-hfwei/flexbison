@@ -22,7 +22,7 @@
 [0-9]+	{ yylval = atoi(yytext); return NUMBER; }
 
 \n      { return EOL; }
-"//".*  
+"//".*  { /* ignore comments */ }
 [ \t]   { /* ignore white space */ }
 .	{ yyerror("Mystery character %c\n", *yytext); }
 %%
