@@ -5,7 +5,7 @@
  * $Header: /home/johnl/flnb/code/RCS/fb1-1.l,v 2.1 2009/11/08 02:53:18 johnl Exp $
  */
 
-/* fb1-1 just like unix wc */
+/* fb1-1 just like unix wc (wordcount) */
 %{
 int chars = 0;
 int words = 0;
@@ -14,18 +14,13 @@ int lines = 0;
 
 %%
 
-%{
-// [a-zA-Z]+	{ words++; chars += strlen(yytext); }
-%}
-
-[^ \t\n\r\f\v]+ { words++; chars += strlen(yytext); }
-\n		{ chars++; lines++; }
-.		{ chars++; }
+[^ \t\n\r\f\v]+   { words++; chars += strlen(yytext); }
+\n		            { chars++; lines++; }
+.		              { chars++; }
 
 %%
 
-int main()
-{
+int main() {
   yylex();
   printf("%8d%8d%8d\n", lines, words, chars);
 }
